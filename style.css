@@ -1,0 +1,55 @@
+html, body{
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+div#outer{
+  text-align: left;
+  margin: auto;
+  width: 960px;
+  
+}
+
+div#hk_header{
+  font-size: 240%;
+  color: #b26932;
+  font-weight: bold;
+  margin: 20px 0 5px 0;
+}
+
+div#hk_header_sub{
+  font-size: 120%;
+}
+
+div#nav ul{
+  margin: 20px 0 10px 0;
+  padding: 5px;
+  border: 1px solid #888;
+  background: #ccc;
+  background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ccc));
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+div#nav ul li{
+  display: inline;
+}
+
+div#nav a{
+  text-decoration: none;
+  padding:4px;
+  color: #444;
+  text-shadow: 1px 1px 1px #fff;
+  
+}
+
+div#footer{
+  text-align: center;
+  margin-top: 40px;
+  color: #888;
+}
+
+
+
