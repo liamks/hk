@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+      <title></title>
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="viewport" content="user-scalable=no, width=device-width" />
+      <link rel="stylesheet" href="jquery.mobile-1.0a2.min.css" />
+      <script type="text/javascript" src="jquery-1.4.4.min.js"></script>
+      <script type="text/javascript" src="jquery.mobile-1.0a2.min.js"></script>
+      <meta charset="utf-8">
+
+  </head>
+  <script>
+    function BlockMove(event){
+      event.preventDefault();
+    }
+    
+    alpha = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    
+    
+    function bodyHandlers(){
+      $("#top").live('swipeleft',function(e){
+        var index = Number($("#top").attr("data-index"));
+        index = (index == 0) ? 0 : index - 1;
+        $("#top").empty();
+        $("#top").append(alpha[index])
+        $("#top").attr("data-index",index)
+      });
+      
+      $("#top").live('swiperight',function(e){
+        var index = Number($("#top").attr("data-index"));
+        index = (index == 25) ? 25 : index + 1;
+        $("#top").empty();
+        $("#top").append(String(alpha[index]))
+        $("#top").attr("data-index",index)
+      });
+      
+      
+      $("#slider").live("change", function(e){
+        var index = Number($(this).attr("value"))
+        $("h1").empty();
+        $("h1").append(String(alpha[index]))
+        //$("#top").attr("data-index",index)
+      })
+      
+      $("div#tapper").live("tap", function(e){
+        var index = Number($("#slider").attr("value"))
+        $("#footer").append(String(alpha[index]))
+      })
+      
+      $("div#footer").live("swiperight", function(e){
+        $("#footer").append(" ")
+      })
+      
+      $("div#footer").live("swipeleft", function(e){
+        var value = $("#footer").html()
+        value = value.slice(0,value.length - 1);
+        $("#footer").empty().append(value)
+      })
+    }
+    
+
+    
+    
+    function init(){
+      bodyHandlers();
+      $("#slider").hide()
+      $(".ui-slider").css("width", "100%")
+      $(".ui-slider").css("margin-left", "0")
+      $("h1").css({
+       "font-size": "130%","font-weight":"bold", "margin":" 3px 0"
+      })
+      $("body").css({"-webkit-user-select": "none"})
+      $("#footer").css({"background":"black", "position": "absolute", "color":"white", "padding":"4px", "bottom":0, "width": "100%", "height": "100px"})
+      $("#tapper").css({"height":"100px", "background":"#ccc"})
+
+    }
+    
+    $(document).ready(init);
+  </script>
+  <body class="ui-mobile-viewport">
+    <div data-role="page" id="home">
+
+      <div data-role="header">
+        <h1>a</h1>
+      </div>
+
+      <div data-role="content"> 
+        <div data-role="fieldcontain">
+         	<input type="range" name="slider" id="slider" value="0" min="0" max="25"  />
+        </div>  
+
+      </div>
+      <div id="tapper">
+        
+      </div>
+
+      <div id="footer">
+      </div>
+    </div>
+
+   
+
+
+
+  </body>
+</html>
